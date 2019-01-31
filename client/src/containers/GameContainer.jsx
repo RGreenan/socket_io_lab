@@ -10,6 +10,7 @@ class GameContainer extends React.Component {
     this.state = {
       playerType: null,
       currentQuestion: null,
+      waitingForAnswer: false,
       guesserAnswers: []
     }
 
@@ -26,7 +27,7 @@ class GameContainer extends React.Component {
   sendToGuesser(answer){
     const answers = this.state.guesserAnswers;
     answers.push(answer);
-    this.setState({guesserAnswers:answers})
+    this.setState({guesserAnswers:answers, waitingForAnswer:false})
     console.log(this.state.guesserAnswers);
   }
 
@@ -47,6 +48,7 @@ class GameContainer extends React.Component {
 
   guessQuestion(question){
     this.socket.emit('guesser', question);
+    this.setState({waitingForAnswer: true})
   }
 
   render() {
@@ -57,6 +59,7 @@ class GameContainer extends React.Component {
           <GuesserComponent
           guesserAnswers={this.state.guesserAnswers}
           guesserQuestion={this.guessQuestion}
+          waitingForAnswer={this.state.waitingForAnswer}
           />
         )
       case "PLAYERTYPE_CHOOSER":

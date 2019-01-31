@@ -8,8 +8,9 @@ class GuesserComponent extends React.Component {
 
   questionSubmitted(event){
     event.preventDefault();
-
+    if(!this.props.waitingForAnswer){
     this.props.guesserQuestion(event.target[0].value);
+    }
   }
 
   render() {
@@ -21,7 +22,10 @@ class GuesserComponent extends React.Component {
       <div>
       <h1>Guesser</h1>
       <form onSubmit={this.questionSubmitted}>
-      <input type="text" id="text"></input>
+      <input
+      type="text"
+      id="text">
+      </input>
       <input
       type="submit"
       value="Submit">
