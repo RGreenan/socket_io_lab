@@ -21,6 +21,7 @@ class GuesserComponent extends React.Component {
     return (
       <div>
       <h1>Guesser</h1>
+      <h4>Choose a celebrity</h4>
       <form onSubmit={this.questionSubmitted}>
       <input
       type="text"

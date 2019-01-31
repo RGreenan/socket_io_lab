@@ -24,10 +24,11 @@ class GameContainer extends React.Component {
     this.socket.on( 'chooser', this.sendToChooser);
   }
 
+
   sendToGuesser(answer){
     const answers = this.state.guesserAnswers;
     answers.push(answer);
-    this.setState({guesserAnswers:answers, waitingForAnswer:false})
+    this.setState({guesserAnswers: answers, waitingForAnswer: false})
     console.log(this.state.guesserAnswers);
   }
 
@@ -40,7 +41,7 @@ class GameContainer extends React.Component {
   }
 
   chooserAnswer(answer){
-    const answerString = answer ? "true" : "false";
+    const answerString = answer ? "correct!! Great Success!!" : "incorrect";
     const currentQuestion = this.state.currentQuestion;
     this.socket.emit('chooser', {currentQuestion, answerString});
     this.setState({currentQuestion: null})

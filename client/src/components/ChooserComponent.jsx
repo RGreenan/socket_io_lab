@@ -17,7 +17,12 @@ class ChooserComponent extends React.Component {
   }
 
   render() {
-    if (this.props.currentQuestion === null){return <h1>Chooser</h1>;}
+    if (this.props.currentQuestion === null)
+    {return <div>
+      <h1>Chooser</h1><h4>Waiting on a guess...</h4>
+      </div>
+      ;}
+
     return (
       <div>
       <h1>Chooser</h1>
@@ -30,4 +35,4 @@ class ChooserComponent extends React.Component {
 
 }
 
-export default ChooserComponent
+export default ChooserComponent;
